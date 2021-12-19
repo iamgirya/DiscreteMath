@@ -1,0 +1,29 @@
+﻿  IZ_11.2.cpp
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(35,59): warning C4244: +=: преобразование "double" в "ll", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(38,25): warning C4244: return: преобразование "double" в "ll", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(49,63): warning C4244: +=: преобразование "double" в "ll", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(50,29): warning C4244: return: преобразование "double" в "ll", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(61,63): warning C4244: +=: преобразование "double" в "ll", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(68,5): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(68,13): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(78,11): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(78,21): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(78,28): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(85,5): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(91,5): warning C4244: аргумент: преобразование "ll" в "const unsigned int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(110,15): warning C4244: аргумент: преобразование "double" в "ll", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(168,35): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(168,36): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(175,40): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(175,41): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(181,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(203,20): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(211,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(229,37): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(229,38): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(235,42): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(235,43): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(294,6): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(294,6): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(319,17): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  IZ_11.2.vcxproj -> C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\Debug\IZ_11.2.exe
