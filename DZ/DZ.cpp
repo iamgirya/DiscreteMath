@@ -481,7 +481,89 @@ int main()
         break;
     case(5):
         fileOut.open(("dz.5.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        nextMoh = madeNextEltMoh(baseMoh);
+        nextMoh = deactivateElt(nextMoh, *(new vector<char>{ 'a' }));
+        for (int i = 1; i <= 4; i++)
+            mohOfNum.push_back(i + 48);
+        numNextMoh = madeNextEltMoh(mohOfNum);
+        for (int count_of_letter = 2; count_of_letter <= 4; count_of_letter++)
+        {
+            c1 = {};
+            for (int i = 1; i <= count_of_letter; i++)
+            {
+                c1.push_back(takeNnextElt(numNextMoh, i));
+            }
+            do// выбираем count_of_letter места под а из 5
+            {
+                a1 = {};
+                for (int i = 1; i <= 4-count_of_letter; i++)
+                {
+                    a1.push_back(takeNnextElt(nextMoh, 1));
+                }
+                do// выбираем последовательность из оставшихся символов
+                {
+                    int kc1 = 0;
+                    int ka1 = 0;
+                    for (int i = 1; i <= 4; i++)
+                    {
+                        if (kc1 < c1.size() && i + 48 == c1[kc1])
+                        {
+                            fileOut << 'a';
+                            kc1++;
+                        }
+                        else
+                        {
+                            fileOut << a1[ka1];
+                            ka1++;
+                        }
+                    }
+                    fileOut << endl;
+                } while (takeNextPost(nextMoh, a1));
+            } while (takeNextMoh(numNextMoh, c1, 4));
+        }
+
+        fileOut << endl << endl << endl << endl;
+
+        nextMoh = madeNextEltMoh(baseMoh);
+        nextMoh = deactivateElt(nextMoh, *(new vector<char>{ 'a' }));
+        for (int i = 5; i <= 7; i++)
+            mohOfNum.push_back(i + 48);
+        numNextMoh = madeNextEltMoh(mohOfNum);
+        for (int count_of_letter = 2; count_of_letter <= 7; count_of_letter++)
+        {
+            c1 = {};
+            for (int i = 1; i <= count_of_letter; i++)
+            {
+                c1.push_back(takeNnextElt(numNextMoh, i));
+            }
+            do// выбираем count_of_letter места под а из 7
+            {
+                a1 = {};
+                for (int i = 1; i <= 7 - count_of_letter; i++)
+                {
+                    a1.push_back(takeNnextElt(nextMoh, 1));
+                }
+                do// выбираем последовательность из оставшихся символов
+                {
+                    int kc1 = 0;
+                    int ka1 = 0;
+                    for (int i = 1; i <= 7; i++)
+                    {
+                        if (kc1 < c1.size() && i + 48 == c1[kc1])
+                        {
+                            fileOut << 'a';
+                            kc1++;
+                        }
+                        else
+                        {
+                            fileOut << a1[ka1];
+                            ka1++;
+                        }
+                    }
+                    fileOut << endl;
+                } while (takeNextPost(nextMoh, a1));
+            } while (takeNextMoh(numNextMoh, c1, 7));
+        }
         break;
     case(6):
         fileOut.open(("dz.6.txt"));
