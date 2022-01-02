@@ -13,8 +13,9 @@ static ofstream fileOut;
 vector<char> baseMoh = { 'a','b','c','d','e','f'};
 // множество состоит из пар элемента и булевого значения, включён ли символ. Она используется для запрещения выбора элементов
 pair<char, vector<pair<char, int>>> madeNextEltMoh(vector<char> &alphabet) 
-// создаёт пару из первого элемента алфавита и массива для алфавита, в котором для каждого символа
-// элемент под индексом этого символа равен паре следующего символа в множестве и номеру нынешнего символа(начиная с 1)
+// коротко: пара из односвязного списка и его первого элемента
+// создаёт пару из первого элемента алфавита и массива, в котором для каждого символа данного алфавита
+// элемент под индексом этого символа равен паре следующего символа в алфавите и номеру нынешнего символа(начиная с 1)
 // то есть для базового алфавита в созданном массиве 'следующих' под индексом 'b' хранится символ 'c' и число 2.
 // данный массив необходим для быстрого определения следующей буквы при построении слов, а также для быстрой проверки возможности постоить слово.
 {
@@ -567,7 +568,193 @@ int main()
         break;
     case(6):
         fileOut.open(("dz.6.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        nextMoh = madeNextEltMoh(baseMoh);
+        for (int i = 1; i <= 7; i++)
+            mohOfNum.push_back(i + 48);
+        numNextMoh = madeNextEltMoh(mohOfNum);
+        // Так как имеется лишь 3 варианта расположения
+        //1) 4 1 1 1
+        
+        a1 = { 'a' };
+        do// выбираем 1 букву из 6
+        {
+            nextMoh1 = deactivateElt(nextMoh, a1); // деактивируем буквы, пересобираем множество следующих
+            c1 = { '1', '2', '3','4'};
+            do // выбираем 4 места под 1-ю повторяющуся букву из 7
+            {
+                numNextMoh1 = deactivateElt(numNextMoh, c1);
+                a2 = { takeNnextElt(nextMoh1,1), takeNnextElt(nextMoh1,2), takeNnextElt(nextMoh1,3) };
+                do // выбираем 3 символа из 5
+                {
+                    nextMoh2 = deactivateElt(nextMoh1, a2);
+                    c2 = { takeNnextElt(numNextMoh1,1) };
+                    do // выбираем 1 местo под 2-ю повторяющуся букву
+                    {
+                        numNextMoh2 = deactivateElt(numNextMoh1, c2);
+                        c3 = { takeNnextElt(numNextMoh2,1) };
+                        do // выбираем 1 местo под 3-ю повторяющуся букву
+                        {
+                            numNextMoh3 = deactivateElt(numNextMoh2, c3);
+                            c4 = { takeNnextElt(numNextMoh3,1) };
+                            do // выбираем 1 местo под 4-ю повторяющуся букву
+                            {
+                                for (int i = 1; i <= 7; i++)
+                                {
+                                    for (int j = 0; j < 7; j++)
+                                    {
+                                        if (j < c1.size() && c1[j] - 48 == i)
+                                        {
+                                            fileOut << a1[0];
+                                            break;
+                                        }
+                                        else if (j < c2.size() && c2[j] - 48 == i)
+                                        {
+                                            fileOut << a2[0];
+                                            break;
+                                        }
+                                        else if (j < c3.size() && c3[j] - 48 == i)
+                                        {
+                                            fileOut << a2[1];
+                                            break;
+                                        }
+                                        else if (j < c4.size() && c4[j] - 48 == i)
+                                        {
+                                            fileOut << a2[2];
+                                            break;
+                                        }
+                                    }
+                                }
+                                fileOut << endl;
+                            } while (takeNextMoh(numNextMoh3, c4, 1));
+                        } while (takeNextMoh(numNextMoh2, c3, 2));
+                    } while (takeNextMoh(numNextMoh1, c2, 3));
+                } while (takeNextMoh(nextMoh1, a2, 5));
+            } while (takeNextMoh(numNextMoh, c1, 7));
+        } while (takeNextMoh(nextMoh, a1, 6));
+
+        fileOut << endl;
+        //2) 3 2 1 1
+        
+        a1 = { 'a' };
+        do// выбираем 1 букву из 6
+        {
+            nextMoh1 = deactivateElt(nextMoh, a1); // деактивируем буквы, пересобираем множество следующих
+            c1 = { '1', '2', '3' };
+            do // выбираем 3 места под 1-ю повторяющуся букву из 7
+            {
+                numNextMoh1 = deactivateElt(numNextMoh, c1);
+                a2 = { takeNnextElt(nextMoh1,1) };
+                do // выбираем 1 символ из 5
+                {
+                    nextMoh2 = deactivateElt(nextMoh1, a2);
+                    a3 = { takeNnextElt(nextMoh2,1), takeNnextElt(nextMoh2,2)};
+                    do // выбираем 2 символа из 5
+                    {
+                        c2 = { takeNnextElt(numNextMoh1,1),takeNnextElt(numNextMoh1,2) };
+                        do // выбираем 2 местo под 2-ю повторяющуся букву
+                        {
+                            numNextMoh2 = deactivateElt(numNextMoh1, c2);
+                            c3 = { takeNnextElt(numNextMoh2,1) };
+                            do // выбираем 1 местo под 3-ю повторяющуся букву
+                            {
+                                numNextMoh3 = deactivateElt(numNextMoh2, c3);
+                                c4 = { takeNnextElt(numNextMoh3,1) };
+                                do // выбираем 1 местo под 4-ю повторяющуся букву
+                                {
+                                    for (int i = 1; i <= 7; i++)
+                                    {
+                                        for (int j = 0; j < 7; j++)
+                                        {
+                                            if (j < c1.size() && c1[j] - 48 == i)
+                                            {
+                                                fileOut << a1[0];
+                                                break;
+                                            }
+                                            else if (j < c2.size() && c2[j] - 48 == i)
+                                            {
+                                                fileOut << a2[0];
+                                                break;
+                                            }
+                                            else if (j < c3.size() && c3[j] - 48 == i)
+                                            {
+                                                fileOut << a3[0];
+                                                break;
+                                            }
+                                            else if (j < c4.size() && c4[j] - 48 == i)
+                                            {
+                                                fileOut << a3[1];
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    fileOut << endl;
+                                } while (takeNextMoh(numNextMoh3, c4, 1));
+                            } while (takeNextMoh(numNextMoh2, c3, 2));
+                        } while (takeNextMoh(numNextMoh1, c2, 4));
+                    } while (takeNextMoh(nextMoh2, a3, 4));
+                } while (takeNextMoh(nextMoh1, a2, 5));
+            } while (takeNextMoh(numNextMoh, c1, 7));
+        } while (takeNextMoh(nextMoh, a1, 6));
+
+        fileOut << endl;
+        //3) 2 2 2 1
+
+        a1 = { 'a', 'b', 'c'};
+        do// выбираем 3 букву из 6
+        {
+            nextMoh1 = deactivateElt(nextMoh, a1); // деактивируем буквы, пересобираем множество следующих
+            c1 = { '1', '2'};
+            do // выбираем 2 места под 1-ю повторяющуся букву из 7
+            {
+                numNextMoh1 = deactivateElt(numNextMoh, c1);
+                a2 = { takeNnextElt(nextMoh1,1) };
+                do // выбираем 1 символ из 3
+                {
+                    c2 = { takeNnextElt(numNextMoh1,1),takeNnextElt(numNextMoh1,2) };
+                    do // выбираем 2 местo под 2-ю повторяющуся букву
+                    {
+                        numNextMoh2 = deactivateElt(numNextMoh1, c2);
+                        c3 = { takeNnextElt(numNextMoh2,1), takeNnextElt(numNextMoh2,2) };
+                        do // выбираем 2 местa под 3-ю повторяющуся букву
+                        {
+                            numNextMoh3 = deactivateElt(numNextMoh2, c3);
+                            c4 = { takeNnextElt(numNextMoh3,1) };
+                            do // выбираем 1 местo под 4-ю повторяющуся букву
+                            {
+                                for (int i = 1; i <= 7; i++)
+                                {
+                                    for (int j = 0; j < 7; j++)
+                                    {
+                                        if (j < c1.size() && c1[j] - 48 == i)
+                                        {
+                                            fileOut << a1[0];
+                                            break;
+                                        }
+                                        else if (j < c2.size() && c2[j] - 48 == i)
+                                        {
+                                            fileOut << a1[1];
+                                            break;
+                                        }
+                                        else if (j < c3.size() && c3[j] - 48 == i)
+                                        {
+                                            fileOut << a1[2];
+                                            break;
+                                        }
+                                        else if (j < c4.size() && c4[j] - 48 == i)
+                                        {
+                                            fileOut << a2[0];
+                                            break;
+                                        }
+                                    }
+                                }
+                                fileOut << endl;
+                            } while (takeNextMoh(numNextMoh3, c4, 1));
+                        } while (takeNextMoh(numNextMoh2, c3, 3));
+                    } while (takeNextMoh(numNextMoh1, c2, 5));
+                } while (takeNextMoh(nextMoh1, a2, 3));
+            } while (takeNextMoh(numNextMoh, c1, 7));
+        } while (takeNextMoh(nextMoh, a1, 6));
+
         break;
     case(7):
         fileOut.open(("dz.7.txt"));
