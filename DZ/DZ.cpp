@@ -166,7 +166,31 @@ char takeNnextElt(pair<char, vector<pair<char, int>>>& nextElt, int n)
     }
     return c;
 }
+bool takeNextMohPov (pair<char, vector<pair<char, int>>>& nextElt, vector<char>& moh)
+// получает на вход первый элемент, множество следующих элементов. Изменяет подмножество с повторениями на следующее в лексикографическом порядке того же размера.
+{
+    int top = 0;
+    int i = moh.size() - 1;
+    char firstElt = nextElt.first;
+    moh[i] = nextElt.second[moh[i]].first; // меняем последнюю букву
+    if (moh[i] != firstElt) // если не было цикла, всё отлично
+        return true;
+    while (true)
+    {
+        top++; // иначе начинаем идти по слову в начало
+        if (i - top == -1)
+            return false;
 
+        if (nextElt.second[moh[i - top]].first != firstElt)
+            break; // необходимо выбрать такую букву, что при изменении её на следующую, буквы справа от неё можно будет расположить в лексикографическом порядке
+    }
+    moh[i - top] = nextElt.second[moh[i - top]].first; // нашли такую букву
+    while (top > 0)
+    {
+        top--; // меняем весь хвост слова
+        moh[i - top] = moh[i - top-1];
+    }
+}
 
 int main()
 {
@@ -174,6 +198,7 @@ int main()
     int numOfAsk;
     vector<char> mohOfNum;
     vector<char> c1,c2,c3,c4,c5,c6,a1,a2,a3,a4,a5,a6;
+    char tmp;
     vector<char> startMoh = { 'a','a','a' };
     pair<char, vector<pair<char, int>>> nextMoh, numNextMoh, nextMoh1, numNextMoh1, nextMoh2, numNextMoh2, nextMoh3, nextMoh4, numNextMoh3, numNextMoh4;
     cout << "Укажите номер задачи, которую необходимо выполнить, либо введите 0 для выхода: ";
@@ -184,7 +209,115 @@ int main()
         return 0;
     case(1):
         fileOut.open(("dz.1.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        int main_k;
+        baseMoh = {};
+        tmp='/';
+        cout << endl << "Вводите символы множества, последним вводится символ '.' :";
+        cin >> tmp;
+        while (tmp != '.')
+        {
+            baseMoh.push_back(tmp);
+            cin >> tmp;
+        }
+        cout << endl << "Введите k: ";
+        cin >> main_k;
+
+        nextMoh = madeNextEltMoh(baseMoh);
+        a1 = {};
+        for (int i = 1; i <= main_k; i++)
+            a1.push_back(takeNnextElt(nextMoh, 1));
+        do
+        {
+            for (int i = 1; i <= main_k; i++)
+            {
+                fileOut << a1[i - 1];
+            }
+            fileOut << endl;
+        } while (takeNextPost(nextMoh, a1));
+
+        fileOut << endl << endl << endl << endl;
+
+        a1 = {};
+        for (int i = 1; i <= baseMoh.size(); i++)
+            a1.push_back(takeNnextElt(nextMoh, i));
+        do
+        {
+            for (int i = 1; i <= a1.size(); i++)
+            {
+                fileOut << a1[i - 1];
+            }
+            fileOut << endl;
+        } while (takeNextPerest(nextMoh, a1));
+
+        fileOut << endl << endl << endl << endl;
+
+        if (baseMoh.size() < main_k)
+        {
+            fileOut << "размещений по данному количеству элементов не существует." << endl;
+        }
+        else
+        {
+            a1 = {};
+            for (int i = 1; i <= main_k; i++)
+                a1.push_back(takeNnextElt(nextMoh, i));
+            do
+            {
+                for (int i = 1; i <= a1.size(); i++)
+                {
+                    fileOut << a1[i - 1];
+                }
+                fileOut << endl;
+            } while (takeNextPerest(nextMoh, a1));
+        }
+
+        fileOut << endl << endl << endl << endl;
+
+
+        for (int j = 1; j <= baseMoh.size(); j++)
+        {
+            a1 = {};
+            for (int i = 1; i <= j; i++)
+                a1.push_back(takeNnextElt(nextMoh, i));
+            do
+            {
+                for (int i = 1; i <= a1.size(); i++)
+                {
+                    fileOut << a1[i - 1];
+                }
+                fileOut << endl;
+            } while (takeNextMoh(nextMoh, a1, baseMoh.size()));
+        }
+
+        fileOut << endl << endl << endl << endl;
+        
+        a1 = {};
+        for (int i = 1; i <= main_k; i++)
+            a1.push_back(takeNnextElt(nextMoh, i));
+        do
+        {
+            for (int i = 1; i <= a1.size(); i++)
+            {
+                fileOut << a1[i - 1];
+            }
+            fileOut << endl;
+        } while (takeNextMoh(nextMoh, a1, baseMoh.size()));
+    
+        fileOut << endl << endl << endl << endl;
+
+        a1 = {};
+        for (int i = 1; i <= main_k; i++)
+            a1.push_back(takeNnextElt(nextMoh, 1));
+        do
+        {
+            for (int i = 1; i <= a1.size(); i++)
+            {
+                fileOut << a1[i - 1];
+            }
+            fileOut << endl;
+        } while (takeNextMohPov(nextMoh, a1));
+
+        fileOut << endl << endl << endl << endl;
+
         break;
     case(2):
         fileOut.open(("dz.2.txt"));
