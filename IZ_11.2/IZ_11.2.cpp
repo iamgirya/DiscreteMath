@@ -140,7 +140,7 @@ static ofstream f3("11.2.3.txt");
 static ofstream f4("11.2.4.txt");
 
 ll c1 = 0, c2 = 0, c3 = 0, c4 = 0; // количество выведенных графов по задачам
-const int n = 7, reb = 6; // количество вершин в задачах 1, 2, 4 и ребёр в 4
+const int n = 7, reb = 10; // количество вершин в задачах 1, 2, 4 и ребёр в 4
 const int color = 5; // количество цветов
 const int nn = 6; // количество вершин в задаче 3
 void printG(ll mask, int num, vector<int> colors = *(new vector<int>)) // вывод графа, записанного в битовой маске, в виде матрицы смежности
@@ -162,7 +162,7 @@ void printG(ll mask, int num, vector<int> colors = *(new vector<int>)) // выв
 
 	for (int i = 1; i <= size; i++)
 	{
-		int lvl = ((i - 2) * (i - 1)) / 2;;
+		int lvl = ((i - 2) * (i - 1)) / 2;
 		for (int j = 1; j < i; j++)
 		{
 			f << ((mask & (1 << lvl + j - 1)) != 0) << ' ';  // проходимся до главной диагонали
@@ -203,18 +203,30 @@ void nextMask(ll& mask, int lvl) // получает нынешнюю маску
 	mask += (1 << lvl);
 }
 /////////////////////////////////////////////////////
-bool isConnected(vector<vector<bool>>& matrShej, vector<bool>& was, int nowV, int endV)
+bool isConnected(ll mask, vector<bool>& was, int nowV, int endV, int maxNum)
 {
 	if (nowV == endV)
 		return true;
 	was[nowV] = true;
-	for (int i = 0; i < was.size(); i++)
-		if (matrShej[nowV][i] && !was[i])
-			if (isConnected(matrShej, was, i, endV))
+	
+	int lvl = ((nowV - 1) * (nowV)) / 2;
+	for (int j = 0; j < nowV; j++)
+	{
+		if (!was[j] && mask & (1 << maxNum -(1+ lvl + j)))  // проходимся до главной диагонали
+			if (isConnected(mask, was, j, endV, maxNum))
 				return true;
+	}
+	for (int j = nowV+1; j < n; j++)
+	{
+
+		lvl = ((j - 1) * (j)) / 2;
+		if (!was[j] && mask & (1 << maxNum- (1+lvl + nowV))) // проходимся после главной диагонали
+			if (isConnected(mask, was, j, endV, maxNum))
+				return true;
+	}
 	return false;
 }
-void addToList(ll mask) // добавляет граф к связным и проверяет, является ли он эйлеровым или эйлеровым с reb рёбрами
+void addToList(ll mask, int maxNum) // добавляет граф к связным и проверяет, является ли он эйлеровым или эйлеровым с reb рёбрами
 {
 	c1++;
 	printG(mask, 1);  //  к связным
@@ -226,13 +238,13 @@ void addToList(ll mask) // добавляет граф к связным и пр
 		int lvl = ((i - 2) * (i - 1)) / 2;;
 		for (int j = 1; j < i; j++)
 		{
-			sum += ((mask & (1 << lvl + j - 1)) != 0);
+			sum += ((mask & (1 << maxNum -(lvl + j) )) != 0);
 		}
 		for (int j = i; j < n; j++)
 		{
 
 			lvl = ((j - 1) * (j)) / 2;
-			sum += (0 != (mask & (1 << lvl + i - 1)));
+			sum += (0 != (mask & (1 << maxNum - (lvl + i))));
 		}
 		count += sum;
 		if (sum % 2) // если это сумма единиц в каждой строке матрицы смежности - чётное, то граф эйлеров
@@ -254,36 +266,25 @@ void addToList(ll mask) // добавляет граф к связным и пр
 	}
 
 }
-int nextNum(int number)
+void destroyOne(ll mask, int number, int &maxNum)
 {
-	int i = number / n;
-	int j = number - i * n;
-	if (j <= i)
-		number += (i - j) + 1;
-	else
-		number += 1;
-	if (number >= n * n)
-		return -1;
-	return number;
-}
-void destroyOne(vector<vector<bool>> matrShej, int number)
-{
+	if (mask <= 0 || number >= maxNum) // невозможный случай
+		return;
+	destroyOne(mask, number+1, maxNum); // вызываем функцию для такого графа, в котором ребро с номером number существует
 
-	int i = number / n;
-	int j = number - i * n;
-
-	int nNum = nextNum(number);
-	if (nNum != -1)
-		destroyOne(matrShej, nNum);
-
-	matrShej[i][j] = false;
-	matrShej[j][i] = false;
 	vector<bool> was; was.resize(n, false);
-	if (isConnected(matrShej, was, i, j))
+	int i = 1, j = number;  // переводим number в индексы для прохода в глубину для проверки связности
+	while (j >= i)
 	{
-		//addToList(matrShej);
-		if (nNum != -1)
-			return destroyOne(matrShej, nNum);
+		j -= i;
+		i++;
+	}
+
+	ll nMask = mask - (1 << maxNum - number-1);
+	if (nMask > 0 && isConnected(nMask, was, i, j, maxNum)) // если граф после удаления ребра number существует и является связным
+	{
+		addToList(nMask, maxNum);  // записываем его
+		return destroyOne(nMask, number+1, maxNum); // вызываем функцию для него, но удаляем следующее ребро
 	}
 }
 ////////////////////////////////////////////////////
@@ -336,9 +337,6 @@ int main()
 {
 	SetConsoleCP(1251);  // Подключаем ввод русских букв
 	SetConsoleOutputCP(1251);
-
-	// ту ду: переделай первую задачу под битовые маски 1412412414124124124124124124124124124214141241421
-
 	// задача 11.2.3
 	vector<int> colors; colors.resize(nn, -1);   // инициализация массива цветов.
 	ll rebrMask = 0;							// если у вершины цвет -1 то она непокрашена
@@ -347,18 +345,19 @@ int main()
 		<< kolvoKraska(nn, color) << endl;      // Вычислим количество формулой
 	addNewV(rebrMask, colors, 1, 1);			// Для записи матрицы будем использовать битовую маску.
 												// Она будет заменять нижнюю диагональ матрицы смежности, записанную подряд.
-	cout << "Количество графов порядка 6, что можно покрасить в 5 цветов, выведенных в файл равно: " << c3 << endl;
+	cout << "Количество графов порядка 6, что можно покрасить в 5 цветов, выведенных в файл равно: " << c3 << endl<< endl;
 
-	/*
-	ll rebrmask2 = (1<<n+1)-1;
-	addToList(rebrmask2);
-	destroyOne(rebrmask2, 0);
-	f1.close(); f2.close(); f3.close();
+
+	// задача 11.2.(1,2,4)
+	int maxNum = ((n-1) * (n)) / 2;
+	ll rebrmask2 = (1<< maxNum)-1;
+	addToList(rebrmask2, maxNum);
+	destroyOne(rebrmask2, 0, maxNum);
+	f1.close(); f2.close(); f3.close(); f4.close();
 	cout << "Количество связных графов порядка 7, выведенных в файл равно: " << c1 << endl;
-	cout << "Количество связных графов порядка 7, согласно формуле равно: " << kolvoSvyaz(7) << endl;
+	cout << "Количество связных графов порядка 7, согласно формуле равно: " << kolvoSvyaz(n) << endl;
 	cout << "Количество эйлеровых графов порядка 7, выведенных в файл равно: " << c2 << endl;
-	cout << "Количество эйлеровых графов порядка 7, согласно формуле равно: " << kolvoEiler(7) << endl;
-	cout << "Количество эйлеровых графов порядка 7 с 6-ю рёбрами, выведенных в файл равно: " << c4 << endl;
-	cout << "Количество эйлеровых графов порядка 7 с 6-ю рёбрами, согласно формуле равно: " << kolvoPQEiler(7)[6] << endl;
-	*/
+	cout << "Количество эйлеровых графов порядка 7, согласно формуле равно: " << kolvoEiler(n) << endl;
+	cout << "Количество эйлеровых графов порядка 7 с 10-ю рёбрами, выведенных в файл равно: " << c4 << endl;
+	cout << "Количество эйлеровых графов порядка 7 с 10-ю рёбрами, согласно формуле равно: " << kolvoPQEiler(n)[reb] << endl;
 }

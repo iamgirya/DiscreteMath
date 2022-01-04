@@ -18,12 +18,17 @@ C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(175,40): warnin
 C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(175,41): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
 C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(181,21): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(203,20): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(211,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(229,37): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(229,38): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(235,42): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(235,43): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(294,6): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(294,6): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(319,17): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(215,6): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(215,52): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(223,6): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(223,54): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(241,44): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(241,45): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(247,49): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(247,50): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(283,43): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(283,44): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(295,6): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(295,6): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\IZ_11.2.cpp(320,17): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
   IZ_11.2.vcxproj -> C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_11.2\Debug\IZ_11.2.exe
