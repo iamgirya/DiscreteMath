@@ -1,0 +1,15 @@
+﻿  IZ_10.2.cpp
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(44,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(158,18): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(170,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(319,55): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(324,60): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(329,60): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(382,55): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(387,60): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(392,60): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(410,47): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(415,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(92): warning C4715: takeNextMoh: значение возвращается не при всех путях выполнения
+C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\IZ_10.2.cpp(213): warning C4715: takeNextMohPov: значение возвращается не при всех путях выполнения
+  IZ_10.2.vcxproj -> C:\Users\danek\Documents\GitHub\DiscreteMath\IZ_10.2\Debug\IZ_10.2.exe
