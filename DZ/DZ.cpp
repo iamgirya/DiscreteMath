@@ -276,8 +276,10 @@ int main()
     int numOfAsk;
     vector<vector<bool>>matr;
     vector<char> mohOfNum;
+    vector<int> removing;
     vector<char> c1,c2,c3,c4,c5,c6,a1,a2,a3,a4,a5,a6;
     char tmp;
+    ifstream fileIn("input.txt");
     vector<char> startMoh = { 'a','a','a' };
     pair<char, vector<pair<char, int>>> nextMoh, numNextMoh, nextMoh1, numNextMoh1, nextMoh2, numNextMoh2, nextMoh3, nextMoh4, numNextMoh3, numNextMoh4;
     cout << "Укажите номер задачи, которую необходимо выполнить, либо введите 0 для выхода: ";
@@ -991,7 +993,28 @@ int main()
         break;
     case(8):
         fileOut.open(("dz.8.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        fileIn >> p;
+        cout << "Граф и перестановка введёны из файла input.txt" << endl;
+
+        for (int i = 0; i < p; i++)
+        {
+            matr.push_back(*(new vector<bool>));
+            for (int j = 0; j < p; j++)
+            {
+                int tmp; fileIn >> tmp;
+                if (tmp == 1)
+                    matr[i].push_back(true);
+                else
+                    matr[i].push_back(false);
+            }
+        }
+
+        for (int i = 0; i < p; i++)
+        {
+            int tmp; fileIn >> tmp;
+            removing.push_back(tmp);
+        }
+        // свап и чек
         break;
     case(9):
         fileOut.open(("dz.9.txt"));
@@ -1028,7 +1051,25 @@ int main()
         break;
     case(12):
         fileOut.open(("dz.12.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        cout << endl << "Введите порядок графа: ";
+        cin >> p;
+        q = -1;
+
+        count1 = 0;
+
+        for (int i = 0; i < p; i++)
+        {
+            matr.push_back(*(new vector<bool>));
+            for (int j = 0; j < p; j++)
+                if (i != j)
+                    matr[i].push_back(true);
+                else
+                    matr[i].push_back(false);
+        }
+
+        printG(rebrmask2);
+        destroyOneOrientir(matr, 0, 0, p * p - p);
+        cout << endl << "Количество графов данного порядка: " << count1;
         break;
     default:
         cout << "Задачи с таким номером не существует." << endl;
