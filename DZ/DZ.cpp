@@ -9,7 +9,8 @@
 using namespace std;
 typedef long long ll;
 
-static ofstream fileOut;
+// функции, выполняющие первые 6 задач
+static ofstream fileOut, supFileOut;
 vector<char> baseMoh = { 'a','b','c','d','e','f'};
 // множество состоит из пар элемента и булевого значения, включён ли символ. Она используется для запрещения выбора элементов
 pair<char, vector<pair<char, int>>> madeNextEltMoh(vector<char> &alphabet) 
@@ -192,10 +193,88 @@ bool takeNextMohPov (pair<char, vector<pair<char, int>>>& nextElt, vector<char>&
     }
 }
 
+
+/////////////////////////////////////////////////////////////////////////////////////
+int p = 7, q = 10; // количество вершин и рёбер
+ll rebrmask2, count1, count2; int maxNum;
+
+void printG(ll mask) // вывод графа, записанного в битовой маске, в виде матрицы смежности
+{
+    for (int i = 1; i <= p; i++)
+    {
+        int lvl = ((i - 2) * (i - 1)) / 2;
+        for (int j = 1; j < i; j++)
+        {
+            fileOut << ((mask & (1 << lvl + j - 1)) != 0) << ' ';  // проходимся до главной диагонали
+        }
+        fileOut << 0 << ' ';  // главная диагональ
+        for (int j = i; j < p; j++)
+        {
+
+            lvl = ((j - 1) * (j)) / 2;
+            fileOut << (0 != (mask & (1 << lvl + i - 1))) << ' '; // проходимся после главной диагонали
+        }
+        fileOut << endl;
+    }
+    fileOut << endl;
+    count1++;
+}
+void destroyOneNonOrientir(ll mask, int number, int& maxNum, int numOfReb)
+{
+    if (mask < 0 || number >= maxNum) // невозможный случай
+        return;
+    destroyOneNonOrientir(mask, number + 1, maxNum, numOfReb); // вызываем функцию для такого графа, в котором ребро с номером number существует
+
+    ll nMask = mask - (1 << maxNum - number - 1);
+    if (nMask >= 0 ) // если граф после удаления ребра number существует и является связным
+    {
+        if (numOfReb-1 == q || q == -1) 
+            printG(nMask);  // записываем его
+
+        return destroyOneNonOrientir(nMask, number + 1, maxNum, numOfReb-1); // вызываем функцию для него, но удаляем следующее ребро
+    }
+}
+///////////////////////////////////////////////////////////////
+void printG(vector<vector<bool>> &matr) // вывод графа, записанного в матрице
+{
+    for (int i = 0; i < p; i++)
+    {
+        for (int j = 0; j < p; j++)
+            fileOut << matr[i][j];
+        fileOut << endl;
+    }
+    fileOut << endl;
+    count1++;
+}
+void destroyOneOrientir(vector<vector<bool>> matr, int i, int j, int numOfReb)
+{
+    if (i == p) // невозможный случай
+        return;
+    if (j == p-1)
+        destroyOneOrientir(matr, i+1, 0, numOfReb);
+    else
+        destroyOneOrientir(matr, i, j+1, numOfReb); 
+
+    if (i != j)
+    {
+        matr[i][j] = false;
+        numOfReb--;
+
+        if (numOfReb == q || q == -1)
+            printG(matr);  // записываем его
+
+        if (j == p - 1)
+            return destroyOneOrientir(matr, i + 1, 0, numOfReb);
+        else
+            return destroyOneOrientir(matr, i, j + 1, numOfReb);
+    }
+}
+///////////////////////////////////////////////////////////////
 int main()
 {
     SetConsoleCP(1251); SetConsoleOutputCP(1251);  // Подключаем вывод русских букв
     int numOfAsk;
+    vector<vector<bool>>matr;
     vector<char> mohOfNum;
     vector<char> c1,c2,c3,c4,c5,c6,a1,a2,a3,a4,a5,a6;
     char tmp;
@@ -891,7 +970,24 @@ int main()
         break;
     case(7):
         fileOut.open(("dz.7.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        cout << endl << "Введите порядок графа: ";
+        cin >> p;
+        cout << endl << "Введите количество рёбер: ";
+        cin >> q;
+
+        count1 = 0;
+        maxNum = ((p - 1) * (p)) / 2;
+        rebrmask2 = (1 << maxNum) - 1;
+        if (q == maxNum)
+            printG(rebrmask2);
+        destroyOneNonOrientir(rebrmask2, 0, maxNum, maxNum);
+        fileOut << endl << endl << endl << endl << endl << endl << endl << endl;
+        cout << endl << "Количество графов данного порядка с данными рёбрами: " << count1;
+        q = -1; count1 = 0;
+
+        printG(rebrmask2);
+        destroyOneNonOrientir(rebrmask2, 0, maxNum, maxNum);
+        cout << endl << "Количество графов данного порядка: " << count1;
         break;
     case(8):
         fileOut.open(("dz.8.txt"));
@@ -907,7 +1003,8 @@ int main()
         break;
     case(11):
         fileOut.open(("dz.11.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        
+
         break;
     case(12):
         fileOut.open(("dz.12.txt"));
