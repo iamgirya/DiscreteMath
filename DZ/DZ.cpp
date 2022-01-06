@@ -1003,7 +1003,27 @@ int main()
         break;
     case(11):
         fileOut.open(("dz.11.txt"));
-        
+        cout << endl << "Введите порядок графа: ";
+        cin >> p;
+        cout << endl << "Введите количество рёбер: ";
+        cin >> q;
+
+        count1 = 0;
+
+        for (int i = 0; i < p; i++)
+        {
+            matr.push_back(*(new vector<bool>));
+            for (int j = 0; j < p; j++)
+                if (i != j)
+                    matr[i].push_back(true);
+                else
+                    matr[i].push_back(false);
+        }
+
+        if (q == p * p - p)
+            printG(rebrmask2);
+        destroyOneOrientir(matr, 0, 0, p * p - p);
+        cout << endl << "Количество графов данного порядка с данными рёбрами: " << count1;
 
         break;
     case(12):
