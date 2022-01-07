@@ -277,6 +277,7 @@ int main()
     vector<vector<bool>>matr;
     vector<char> mohOfNum;
     vector<int> removing;
+    vector<bool> supVector;
     vector<char> c1,c2,c3,c4,c5,c6,a1,a2,a3,a4,a5,a6;
     char tmp;
     ifstream fileIn("input.txt");
@@ -1009,12 +1010,40 @@ int main()
             }
         }
 
+
         for (int i = 0; i < p; i++)
         {
             int tmp; fileIn >> tmp;
-            removing.push_back(tmp);
+            removing.push_back(tmp-1);
+            supVector.push_back(true);
         }
-        // свап и чек
+        for (int i = 0; i < p; i++)
+        {
+            if (removing[i] < p && removing[i] >= 0 && supVector[removing[i]])
+                supVector[removing[i]] = false;
+            else
+            {
+                fileOut.close();
+                cout << "Неправильная перестановка!"; return 1;
+            }
+        }
+
+        for (int i = 0; i < p; i++)
+        {
+
+            for (int j = 0; j < p; j++)
+            {
+                if (!(matr[i][j] == matr[removing[i]][removing[j]]))
+                {
+                    cout << "Данная перестановка не автоморфизм!";
+                    fileOut << "Нет";
+                    fileOut.close();
+                    return 1;
+                }
+            }
+        }
+        cout << "Данная перестановка автоморфизм!";
+        fileOut << "Да";
         break;
     case(9):
         fileOut.open(("dz.9.txt"));
