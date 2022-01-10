@@ -9,6 +9,23 @@
 using namespace std;
 typedef long long ll;
 
+
+ll fact(ll n)
+{
+    ll tmp = 1;
+    for (ll i = 1; i <= n; i++)
+        tmp *= i;
+    return tmp;
+}
+ll C(ll k, ll n)
+{
+    if (k == n)
+        return 1;
+    if (k > n)
+        return 0;
+    return fact(n) / (fact(k) * fact(n - k));
+}
+
 // функции, выполняющие первые 6 задач
 static ofstream fileOut, supFileOut;
 vector<char> baseMoh = { 'a','b','c','d','e','f'};
@@ -270,6 +287,39 @@ void destroyOneOrientir(vector<vector<bool>> matr, int i, int j, int numOfReb)
     }
 }
 ///////////////////////////////////////////////////////////////
+
+bool avtomorphCheck(vector<vector<bool>> &matr, vector<int> &removing)
+{
+    for (int i = 0; i < p; i++)
+    {
+
+        for (int j = 0; j < p; j++)
+        {
+            if (!(matr[i][j] == matr[removing[i]][removing[j]]))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+bool avtomorphCheck(vector<vector<bool>>& matr, vector<char>& removing)
+{
+    for (int i = 0; i < p; i++)
+    {
+
+        for (int j = 0; j < p; j++)
+        {
+            if (!(matr[i][j] == matr[removing[i]-48][removing[j]-48]))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+//////////////////////////////////////////////////////////////
 int main()
 {
     SetConsoleCP(1251); SetConsoleOutputCP(1251);  // Подключаем вывод русских букв
@@ -290,6 +340,7 @@ int main()
     case(0):
         return 0;
     case(1):
+        count1 = 0;
         fileOut.open(("dz.1.txt"));
         int main_k;
         baseMoh = {};
@@ -310,12 +361,15 @@ int main()
             a1.push_back(takeNnextElt(nextMoh, 1));
         do
         {
+            count1++;
             for (int i = 1; i <= main_k; i++)
             {
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
         } while (takeNextPost(nextMoh, a1));
+        cout << count1 << endl;
+        count1 = 0;
 
         fileOut << endl << endl << endl << endl;
 
@@ -324,12 +378,15 @@ int main()
             a1.push_back(takeNnextElt(nextMoh, i));
         do
         {
+            count1++;
             for (int i = 1; i <= a1.size(); i++)
             {
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
         } while (takeNextPerest(nextMoh, a1));
+        cout << count1 << endl;
+        count1 = 0;
 
         fileOut << endl << endl << endl << endl;
 
@@ -344,6 +401,7 @@ int main()
                 a1.push_back(takeNnextElt(nextMoh, i));
             do
             {
+                count1++;
                 for (int i = 1; i <= a1.size(); i++)
                 {
                     fileOut << a1[i - 1];
@@ -351,7 +409,8 @@ int main()
                 fileOut << endl;
             } while (takeNextPerest(nextMoh, a1));
         }
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
 
 
@@ -362,6 +421,7 @@ int main()
                 a1.push_back(takeNnextElt(nextMoh, i));
             do
             {
+                count1++;
                 for (int i = 1; i <= a1.size(); i++)
                 {
                     fileOut << a1[i - 1];
@@ -369,7 +429,8 @@ int main()
                 fileOut << endl;
             } while (takeNextMoh(nextMoh, a1, baseMoh.size()));
         }
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
         
         a1 = {};
@@ -377,13 +438,15 @@ int main()
             a1.push_back(takeNnextElt(nextMoh, i));
         do
         {
+            count1++;
             for (int i = 1; i <= a1.size(); i++)
             {
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
         } while (takeNextMoh(nextMoh, a1, baseMoh.size()));
-    
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
 
         a1 = {};
@@ -391,17 +454,20 @@ int main()
             a1.push_back(takeNnextElt(nextMoh, 1));
         do
         {
+            count1++;
             for (int i = 1; i <= a1.size(); i++)
             {
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
         } while (takeNextMohPov(nextMoh, a1));
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
 
         break;
     case(2):
+        count1 = 0;
         fileOut.open(("dz.2.txt"));
         nextMoh = madeNextEltMoh(baseMoh);
         nextMoh = deactivateElt(nextMoh, *(new vector<char>{ 'a' }));
@@ -416,6 +482,7 @@ int main()
             {
                 int kc1=0;
                 int ka1= 0;
+                count1++;
                 for (int i = 1; i <= 5; i++)
                 {
                     if (kc1 < c1.size() && i+48 == c1[kc1])
@@ -433,7 +500,8 @@ int main()
             } while (takeNextPost(nextMoh, a1)); 
         }
         while (takeNextMoh(numNextMoh, c1, 5)); 
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
 
         c1 = { '1', '2' };
@@ -447,6 +515,7 @@ int main()
                 do// выбираем перестановку из 3-х оставшихся мест
                 {
                     int iter1=0, iter2=0;
+                    count1++;
                     for (int i = 1; i <= 5; i++)
                     {
                         if (iter1 < c1.size() && i == c1[iter1]-48)
@@ -470,9 +539,11 @@ int main()
                 } while (takeNextPerest(numNextMoh1, c2));
             } while (takeNextMoh(nextMoh, a1, 5)); 
         } while (takeNextMoh( numNextMoh, c1, 5)); 
-
+        cout << count1 << endl;
+        count1 = 0;
         break;
     case(3):
+        count1 = 0;
         fileOut.open(("dz.3.txt"));
         nextMoh = madeNextEltMoh(baseMoh);
         for (int i = 1; i <= 5; i++)
@@ -492,7 +563,7 @@ int main()
                     c2 = { takeNnextElt(numNextMoh1,1),takeNnextElt(numNextMoh1,2),takeNnextElt(numNextMoh1,3) };
                     do // выбираем перестановку для последних 3-х символов
                     {
-                        int iter1 = 0, iter2 = 0;
+                        count1++;
                         for (int i = 1; i <= 5; i++)
                         {
                             for (int j = 0; j < c2.size(); j++)
@@ -514,7 +585,8 @@ int main()
                 } while (takeNextMoh(nextMoh1, a2, 5));
             } while (takeNextMoh(numNextMoh, c1, 5)); 
         } while (takeNextMoh(nextMoh, a1, 6)); 
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
 
 
@@ -539,7 +611,7 @@ int main()
                         c3 = { takeNnextElt(numNextMoh2,1),takeNnextElt(numNextMoh2,2) };
                         do // выбираем перестановку для последних 2-х символов
                         {
-                            int iter1 = 0, iter2 = 0;
+                            count1++;
                             for (int i = 1; i <= 6; i++)
                             {
                                 for (int j = 0; j < c2.size()+ c1.size()+ c3.size(); j++)
@@ -567,9 +639,11 @@ int main()
                 } while (takeNextMoh(numNextMoh1, c2, 4));
             } while (takeNextMoh(numNextMoh, c1, 6));
         } while (takeNextMoh(nextMoh, a1, 6));
-
+        cout << count1 << endl;
+        count1 = 0;
         break;
     case(4):
+        count1 = 0;
         fileOut.open(("dz.4.txt"));
         nextMoh = madeNextEltMoh(baseMoh);
         for (int i = 1; i <= 7; i++)
@@ -597,7 +671,7 @@ int main()
                             c3 = { takeNnextElt(numNextMoh2,1),takeNnextElt(numNextMoh2,2) };
                             do // выбираем перестановку для последних 2-х символов
                             {
-                                int iter1 = 0, iter2 = 0;
+                                count1++;
                                 for (int i = 1; i <= 7; i++)
                                 {
                                     for (int j = 0; j < 7; j++)
@@ -626,7 +700,8 @@ int main()
                 } while (takeNextMoh(nextMoh1, a2, 5));
             } while (takeNextMoh(numNextMoh, c1, 7));
         } while (takeNextMoh(nextMoh, a1, 6));
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
         
         for (int i = 8; i <= 9; i++)
@@ -658,7 +733,7 @@ int main()
                                 c4 = { takeNnextElt(numNextMoh3,1),takeNnextElt(numNextMoh3,2) };
                                 do // выбираем перестановку для последних 2-х символов
                                 {
-                                    int iter1 = 0, iter2 = 0;
+                                    count1++;
                                     for (int i = 1; i <= 9; i++)
                                     {
                                         for (int j = 0; j < 9; j++)
@@ -693,9 +768,11 @@ int main()
                 } while (takeNextMoh(numNextMoh1, c2, 7));
             } while (takeNextMoh(numNextMoh, c1, 9));
         } while (takeNextMoh(nextMoh, a1, 6));
-
+        cout << count1 << endl;
+        count1 = 0;
         break;
     case(5):
+        count1 = 0;
         fileOut.open(("dz.5.txt"));
         nextMoh = madeNextEltMoh(baseMoh);
         nextMoh = deactivateElt(nextMoh, *(new vector<char>{ 'a' }));
@@ -720,6 +797,7 @@ int main()
                 {
                     int kc1 = 0;
                     int ka1 = 0;
+                    count1++;
                     for (int i = 1; i <= 4; i++)
                     {
                         if (kc1 < c1.size() && i + 48 == c1[kc1])
@@ -737,7 +815,8 @@ int main()
                 } while (takeNextPost(nextMoh, a1));
             } while (takeNextMoh(numNextMoh, c1, 4));
         }
-
+        cout << count1 << endl;
+        count1 = 0;
         fileOut << endl << endl << endl << endl;
 
         nextMoh = madeNextEltMoh(baseMoh);
@@ -763,6 +842,7 @@ int main()
                 {
                     int kc1 = 0;
                     int ka1 = 0;
+                    count1++;
                     for (int i = 1; i <= 7; i++)
                     {
                         if (kc1 < c1.size() && i + 48 == c1[kc1])
@@ -780,8 +860,11 @@ int main()
                 } while (takeNextPost(nextMoh, a1));
             } while (takeNextMoh(numNextMoh, c1, 7));
         }
+        cout << count1 << endl;
+        count1 = 0;
         break;
     case(6):
+        count1 = 0;
         fileOut.open(("dz.6.txt"));
         nextMoh = madeNextEltMoh(baseMoh);
         for (int i = 1; i <= 7; i++)
@@ -813,10 +896,12 @@ int main()
                             c4 = { takeNnextElt(numNextMoh3,1) };
                             do // выбираем 1 местo под 4-ю повторяющуся букву
                             {
+                                count1++;
                                 for (int i = 1; i <= 7; i++)
                                 {
                                     for (int j = 0; j < 7; j++)
                                     {
+                                        
                                         if (j < c1.size() && c1[j] - 48 == i)
                                         {
                                             fileOut << a1[0];
@@ -847,7 +932,6 @@ int main()
             } while (takeNextMoh(numNextMoh, c1, 7));
         } while (takeNextMoh(nextMoh, a1, 6));
 
-        fileOut << endl;
         //2) 3 2 1 1
         
         a1 = { 'a' };
@@ -876,6 +960,7 @@ int main()
                                 c4 = { takeNnextElt(numNextMoh3,1) };
                                 do // выбираем 1 местo под 4-ю повторяющуся букву
                                 {
+                                    count1++;
                                     for (int i = 1; i <= 7; i++)
                                     {
                                         for (int j = 0; j < 7; j++)
@@ -911,7 +996,6 @@ int main()
             } while (takeNextMoh(numNextMoh, c1, 7));
         } while (takeNextMoh(nextMoh, a1, 6));
 
-        fileOut << endl;
         //3) 2 2 2 1
 
         a1 = { 'a', 'b', 'c'};
@@ -936,6 +1020,7 @@ int main()
                             c4 = { takeNnextElt(numNextMoh3,1) };
                             do // выбираем 1 местo под 4-ю повторяющуся букву
                             {
+                                count1++;
                                 for (int i = 1; i <= 7; i++)
                                 {
                                     for (int j = 0; j < 7; j++)
@@ -969,7 +1054,8 @@ int main()
                 } while (takeNextMoh(nextMoh1, a2, 3));
             } while (takeNextMoh(numNextMoh, c1, 7));
         } while (takeNextMoh(nextMoh, a1, 6));
-
+        cout << count1 << endl;
+        count1 = 0;
         break;
     case(7):
         fileOut.open(("dz.7.txt"));
@@ -977,20 +1063,21 @@ int main()
         cin >> p;
         cout << endl << "Введите количество рёбер: ";
         cin >> q;
-
+        cout << endl << "Количество графов данного порядка с данными рёбрами по формулам: " << C(q, p * (p - 1) / 2);
         count1 = 0;
         maxNum = ((p - 1) * (p)) / 2;
         rebrmask2 = (1 << maxNum) - 1;
         if (q == maxNum)
             printG(rebrmask2);
         destroyOneNonOrientir(rebrmask2, 0, maxNum, maxNum);
+        cout << endl << "Количество графов данного порядка с данными рёбрами в файле: " << count1;
         fileOut << endl << endl << endl << endl << endl << endl << endl << endl;
-        cout << endl << "Количество графов данного порядка с данными рёбрами: " << count1;
+        
         q = -1; count1 = 0;
-
+        cout << endl << "Количество графов данного порядка по формулам: " << pow(2, p * (p - 1) / 2);
         printG(rebrmask2);
         destroyOneNonOrientir(rebrmask2, 0, maxNum, maxNum);
-        cout << endl << "Количество графов данного порядка: " << count1;
+        cout << endl << "Количество графов данного порядка в файле: " << count1;
         break;
     case(8):
         fileOut.open(("dz.8.txt"));
@@ -1017,6 +1104,7 @@ int main()
             removing.push_back(tmp-1);
             supVector.push_back(true);
         }
+
         for (int i = 0; i < p; i++)
         {
             if (removing[i] < p && removing[i] >= 0 && supVector[removing[i]])
@@ -1028,26 +1116,57 @@ int main()
             }
         }
 
-        for (int i = 0; i < p; i++)
+        if (avtomorphCheck(matr, removing))
         {
-
-            for (int j = 0; j < p; j++)
-            {
-                if (!(matr[i][j] == matr[removing[i]][removing[j]]))
-                {
-                    cout << "Данная перестановка не автоморфизм!";
-                    fileOut << "Нет";
-                    fileOut.close();
-                    return 1;
-                }
-            }
+            cout << "Данная перестановка автоморфизм!";
+            fileOut << "Да";
         }
-        cout << "Данная перестановка автоморфизм!";
-        fileOut << "Да";
+        else
+        {
+            cout << "Данная перестановка не автоморфизм!";
+            fileOut << "Нет";
+        }
         break;
     case(9):
         fileOut.open(("dz.9.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        fileIn >> p;
+        cout << "Граф и перестановка введёны из файла input.txt" << endl;
+
+        for (int i = 0; i < p; i++)
+        {
+            matr.push_back(*(new vector<bool>));
+            for (int j = 0; j < p; j++)
+            {
+                int tmp; fileIn >> tmp;
+                if (tmp == 1)
+                    matr[i].push_back(true);
+                else
+                    matr[i].push_back(false);
+            }
+        }
+        count1 = 0;
+        baseMoh = {};
+        for (int i = 0; i < p; i++)
+            baseMoh.push_back(i+48);
+        nextMoh = madeNextEltMoh(baseMoh);
+
+        a1 = {};
+        for (int i = 1; i <= baseMoh.size(); i++)
+            a1.push_back(takeNnextElt(nextMoh, i));
+        do
+        {
+            if (avtomorphCheck(matr, a1))
+            {
+                count1++;
+                for (int i = 1; i <= a1.size(); i++)
+                {
+                    fileOut << a1[i - 1]+1-48;
+                }
+                fileOut << endl;
+            }
+        } while (takeNextPerest(nextMoh, a1));
+        cout << "Автоморфизмов всего: " << count1 << endl;
+
         break;
     case(10):
         fileOut.open(("dz.10.txt"));
@@ -1061,7 +1180,7 @@ int main()
         cin >> q;
 
         count1 = 0;
-
+        cout << endl << "Количество графов данного порядка с данными рёбрами по формулам: " << C(q,p*(p-1));
         for (int i = 0; i < p; i++)
         {
             matr.push_back(*(new vector<bool>));
@@ -1075,8 +1194,9 @@ int main()
         if (q == p * p - p)
             printG(rebrmask2);
         destroyOneOrientir(matr, 0, 0, p * p - p);
-        cout << endl << "Количество графов данного порядка с данными рёбрами: " << count1;
+        cout << endl << "Количество графов данного порядка с данными рёбрами в файле: " << count1;
 
+        
         break;
     case(12):
         fileOut.open(("dz.12.txt"));
@@ -1084,6 +1204,7 @@ int main()
         cin >> p;
         q = -1;
 
+        cout << endl << "Количество графов данного порядка по формулам: " << pow(2, p * (p - 1));
         count1 = 0;
 
         for (int i = 0; i < p; i++)
@@ -1098,7 +1219,7 @@ int main()
 
         printG(rebrmask2);
         destroyOneOrientir(matr, 0, 0, p * p - p);
-        cout << endl << "Количество графов данного порядка: " << count1;
+        cout << endl << "Количество графов данного порядка в файле: " << count1;
         break;
     default:
         cout << "Задачи с таким номером не существует." << endl;

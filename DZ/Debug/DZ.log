@@ -1,52 +1,54 @@
 ﻿  DZ.cpp
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(25,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(139,18): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(151,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(208,50): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(208,51): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(215,55): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(215,56): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(228,48): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(228,49): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(323,27): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(327,31): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(336,28): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(347,35): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(358,27): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(365,35): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(380,31): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(394,31): warning C4018: <=: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(421,29): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(452,35): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(459,46): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(498,47): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(500,39): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(505,44): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(545,51): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(547,43): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(552,48): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(557,48): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(605,47): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(610,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(615,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(666,51): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(671,56): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(676,56): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(681,56): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(725,33): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(768,33): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(820,47): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(825,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(830,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(835,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(883,51): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(888,56): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(893,56): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(898,56): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(943,47): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(948,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(953,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(958,52): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(73): warning C4715: takeNextMoh: значение возвращается не при всех путях выполнения
-C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(194): warning C4715: takeNextMohPov: значение возвращается не при всех путях выполнения
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(42,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(156,18): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(168,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(225,50): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(225,51): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(232,55): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(232,56): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(245,48): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(245,49): warning C4334: <<: результат 32-разрядного смещения неявно преобразуется в 64-разрядное значение (предполагалось 64-разрядное смещение?)
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(377,27): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(382,31): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(393,28): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(405,35): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(417,27): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(425,35): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(442,31): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(458,31): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(488,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(521,35): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(528,46): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(569,47): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(571,39): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(576,44): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(617,51): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(619,43): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(624,48): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(629,48): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(679,47): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(684,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(689,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(741,51): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(746,56): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(751,56): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(756,56): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(803,33): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(848,33): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(905,47): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(910,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(915,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(920,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(968,51): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(973,56): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(978,56): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(983,56): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1028,47): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1033,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1038,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1043,52): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1154,27): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1161,35): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(90): warning C4715: takeNextMoh: значение возвращается не при всех путях выполнения
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(211): warning C4715: takeNextMohPov: значение возвращается не при всех путях выполнения
   DZ.vcxproj -> C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\Debug\DZ.exe
