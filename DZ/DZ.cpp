@@ -1170,7 +1170,88 @@ int main()
         break;
     case(10):
         fileOut.open(("dz.10.txt"));
-        cout << "Данная задача ещё не готова." << endl;
+        fileIn >> p;
+        cout << "Граф и перестановка введёны из файла input.txt" << endl;
+        {
+            vector<vector<char>> avtomorphs;
+
+            for (int i = 0; i < p; i++)
+            {
+                matr.push_back(*(new vector<bool>));
+                for (int j = 0; j < p; j++)
+                {
+                    int tmp; fileIn >> tmp;
+                    if (tmp == 1)
+                        matr[i].push_back(true);
+                    else
+                        matr[i].push_back(false);
+                }
+            }
+            count1 = 0;
+            baseMoh = {};
+            for (int i = 0; i < p; i++)
+                baseMoh.push_back(i + 48);
+            nextMoh = madeNextEltMoh(baseMoh);
+
+            a1 = {};
+            for (int i = 1; i <= baseMoh.size(); i++)
+                a1.push_back(takeNnextElt(nextMoh, i));
+            do
+            {
+                if (avtomorphCheck(matr, a1))
+                {
+                    count1++;
+                    avtomorphs.push_back(a1);
+                }
+            } while (takeNextPerest(nextMoh, a1));
+
+            cout << "Автоморфизмов всего: " << count1 << endl;
+            cout << "Способов пометить граф по формуле: " << fact(p) / count1 << endl;
+
+            a1 = {}; count1 = 0;
+            vector<vector<char>> newPerest = {};
+            for (int i = 1; i <= baseMoh.size(); i++)
+                a1.push_back(takeNnextElt(nextMoh, i));
+            do
+            {
+                newPerest = {};
+                for (int i = 0; i < avtomorphs.size(); i++)
+                {
+                    vector<char> tmp = a1;
+                    for (int j = 0; j < a1.size(); j++)
+                    {
+                        tmp[j] = avtomorphs[i][tmp[j] - 48];
+                    }
+                    newPerest.push_back(tmp);
+                }
+                for (int i = 0; i < newPerest.size(); i++)
+                {
+                    for (int j = 0; j < a1.size(); j++)
+                    {
+                        if (a1[j] < newPerest[i][j])
+                            break;
+                        else if (a1[j] > newPerest[i][j])
+                            goto exit;
+                    }
+                }
+                count1++;
+                for (int i = 0; i < p; i++)
+                {
+                    for (int j = 0; j < p; j++)
+                    {
+                        if (matr[a1[i] - 48][a1[j] - 48])
+                            fileOut << 1 << ' ';
+                        else
+                            fileOut << 0 << ' ';
+                    }
+                    fileOut << endl;
+                }
+                fileOut << endl;
+            exit: ;
+            } while (takeNextPerest(nextMoh, a1));
+        }
+        cout << "Способов пометить граф в файле: " << count1 << endl;
+
         break;
     case(11):
         fileOut.open(("dz.11.txt"));

@@ -49,6 +49,12 @@ C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1038,52): warning C4018: 
 C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1043,52): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1154,27): warning C4018: <=: несоответствие типов со знаком и без знака
 C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1161,35): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1197,31): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1213,31): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1218,35): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1221,39): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1227,35): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(1229,39): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(90): warning C4715: takeNextMoh: значение возвращается не при всех путях выполнения
 C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\DZ.cpp(211): warning C4715: takeNextMohPov: значение возвращается не при всех путях выполнения
   DZ.vcxproj -> C:\Users\danek\Documents\GitHub\DiscreteMath\DZ\Debug\DZ.exe
