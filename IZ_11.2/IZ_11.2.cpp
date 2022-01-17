@@ -180,7 +180,7 @@ void printG(ll mask, int num, vector<int> colors = *(new vector<int>)) // выв
 	{
 		for (int i = 0; i < colors.size(); i++)
 		{
-			f << colors[i];   // если это задача 3, то мы передаём в функцию ещё и надоб цветов, выведем и их
+			f << colors[i];   // если это задача 3, то мы передаём в функцию ещё и набор цветов, выведем и их
 		}
 		f << endl;
 	}
@@ -203,9 +203,10 @@ void nextMask(ll& mask, int lvl) // получает нынешнюю маску
 	mask += (1 << lvl);
 }
 /////////////////////////////////////////////////////
-bool isConnected(ll mask, vector<bool>& was, int nowV, int endV, int maxNum)
-{
-	if (nowV == endV)
+bool isConnected(ll mask, vector<bool>& was, int nowV, int endV, int &maxNum)
+{ // проверка связности графа, записанного в битовой маске. Перед вызовом функции мы удалили ребро между nowV и endV,
+  // теперь мы должны проверить, есть иной путь между этими двумя вершинами
+	if (nowV == endV) 
 		return true;
 	was[nowV] = true;
 	
@@ -213,7 +214,7 @@ bool isConnected(ll mask, vector<bool>& was, int nowV, int endV, int maxNum)
 	for (int j = 0; j < nowV; j++)
 	{
 		if (!was[j] && mask & (1 << maxNum -(1+ lvl + j)))  // проходимся до главной диагонали
-			if (isConnected(mask, was, j, endV, maxNum))
+			if (isConnected(mask, was, j, endV, maxNum)) 
 				return true;
 	}
 	for (int j = nowV+1; j < n; j++)

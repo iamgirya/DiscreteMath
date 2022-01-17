@@ -94,13 +94,13 @@ bool takeNextPerest(pair<char,vector<pair<char, int>>>& nextElt, vector<char>& m
     int top = 0;
     int i = moh.size() - 1;
     char firstElt = nextElt.first;
-    bool noOk = true;
+    bool noOk = true; // переменная отвечает за то, является ли нынешнее слово перестановкой
     while (noOk)
     {
         noOk = false;
         moh[i] = nextElt.second[moh[i]].first; // меняем последнюю букву
         if (moh[i] != firstElt)
-            for (int j = i - 1; j > -1; j--)
+            for (int j = i - 1; j > -1; j--) // проверяем, есть ли в слове такая же буква, если есть, то меняем букву на следующую вплоть до цикла
                 if (moh[i] == moh[j])
                     noOk = true;
     }
@@ -115,9 +115,9 @@ bool takeNextPerest(pair<char,vector<pair<char, int>>>& nextElt, vector<char>& m
         while (noOk)
         {
             noOk = false;
-            moh[i - top] = nextElt.second[moh[i - top]].first;
+            moh[i - top] = nextElt.second[moh[i - top]].first; // меняем выбранную букву
             if (moh[i - top] != firstElt)
-                for (int j = i - top - 1; j > -1; j--)
+                for (int j = i - top - 1; j > -1; j--) // проверяем, есть ли в слове такая же буква, если есть, то меняем букву на следующую вплоть до цикла
                     if (moh[i - top] == moh[j])
                         noOk = true;
         }
@@ -126,7 +126,7 @@ bool takeNextPerest(pair<char,vector<pair<char, int>>>& nextElt, vector<char>& m
     }
     while (top > 0)
     {
-        top--; // меняем весь хвост слова
+        top--; // меняем весь хвост слова аналогично, ставя те буквы, которых нет сейчас в слове.
         for (int j = i - top - 1; j > -1; j--)
             if (moh[i - top] == moh[j])
                 noOk = true;
@@ -143,39 +143,40 @@ bool takeNextPerest(pair<char,vector<pair<char, int>>>& nextElt, vector<char>& m
     return true;
 }
 pair<char, vector<pair<char, int>>> deactivateElt( pair<char, vector<pair<char, int>>>& nextElt, vector<char>& word)
-// функция создаёт множество следующих, в котором элементы, находящиеся в word исключены.
+// функция создаёт множество следующих, в котором элементы, находящиеся в множестве word исключены.
 // причём создаётся новое множество следующих, чтобы не уничтожать старое
 {
-    vector<pair<char, int>> newNextElt(255);
+    vector<pair<char, int>> newNextElt(255);// новое множество следующих
     int iter = 0, number = 1;
-    char firstChar = nextElt.first;
-    char tmp = firstChar, last = tmp;
-    char newfirstChar = firstChar;
-    do
+    char firstChar = nextElt.first; // первый элемент нынешнего множества следующих.
+    char tmp = firstChar, last = tmp; // нынешний рассматриваемый элемент старого множества и последний элемент нового множества
+    char newfirstChar = firstChar; // первый элемент нового множества следующих
+    do // проходимся по вслем элементам множества следующий и, если выбранный элемент совпадает с выбранным элементом из word
+       // то удаляем его и ищем следующий символ из word. Иначе добавляем этот элемент в новое множество следующих.
     {
-        if (iter < word.size() && tmp == word[iter] && tmp == newfirstChar)
-        {
-            newfirstChar = nextElt.second[tmp].first;
-            iter++;
-            last = nextElt.second[tmp].first;
+        if (iter < word.size() && tmp == word[iter] && tmp == newfirstChar)  
+        {  // случай, когда нужно исключить символ, что является первым в множестве следующих
+            newfirstChar = nextElt.second[tmp].first; // запоминаем новый первый элемент
+            iter++;  // движемся по слову дальше 
+            last = nextElt.second[tmp].first; // запоминаем новый первый элемент в новом множестве следующих
         }
-        else if (iter == word.size() || nextElt.second[tmp].first != word[iter])
-        {
-            newNextElt[last] = make_pair(nextElt.second[tmp].first,number);
-            last = nextElt.second[tmp].first;
+        else if (iter == word.size() || nextElt.second[tmp].first != word[iter]) // если больше нечего удалять, либо 
+        { // случай, когда элемент не нужно исключать, либо, когда элементы для исключения закончились.
+            newNextElt[last] = make_pair(nextElt.second[tmp].first,number); // в новое множество новых закосим этот элемент
+            last = nextElt.second[tmp].first; // Запоминаем последний элемент, который будет ссылаться на следующий элемент, добавляемый в множество следующих
             number++;
         }
         else if (iter < word.size() && nextElt.second[tmp].first == word[iter])
-        {
+        { // случай, когда нужно исключить не первый элемент множества следующий. Просто не добавляем его в новое множество
             iter++;
         }
         tmp = nextElt.second[tmp].first;
-    } while (nextElt.second[tmp].first != firstChar);
-    newNextElt[last] = make_pair(newfirstChar, number);
+    } while (nextElt.second[tmp].first != firstChar); // проходимся по множеству следующих пока не будет сделан цикл
+    newNextElt[last] = make_pair(newfirstChar, number); // отдельно создаём зацикленность нового множества следующих
     
     return make_pair(newfirstChar, newNextElt);
 }
-char takeNnextElt(pair<char, vector<pair<char, int>>>& nextElt, int n)
+char takeNnextElt(pair<char, vector<pair<char, int>>>& nextElt, int n) // возвращает n-й элемент множества следующих
 {
     char c = nextElt.first;
     for (int i = 1; i < n; i++)
@@ -200,12 +201,12 @@ bool takeNextMohPov (pair<char, vector<pair<char, int>>>& nextElt, vector<char>&
             return false;
 
         if (nextElt.second[moh[i - top]].first != firstElt)
-            break; // необходимо выбрать такую букву, что при изменении её на следующую, буквы справа от неё можно будет расположить в лексикографическом порядке
+            break;  //проходимся до тех пор, пока не найдём первое нециклическое изменение
     }
     moh[i - top] = nextElt.second[moh[i - top]].first; // нашли такую букву
     while (top > 0)
     {
-        top--; // меняем весь хвост слова
+        top--; // меняем весь хвост слова на эту букву.
         moh[i - top] = moh[i - top-1];
     }
 }
@@ -237,16 +238,17 @@ void printG(ll mask) // вывод графа, записанного в бит�
     count1++;
 }
 void destroyOneNonOrientir(ll mask, int number, int& maxNum, int numOfReb)
-{
+{ // mask - неориентированный граф, number - номер удаляемого ребра, maxNum - количество рёбер, numOfRb - сколько рёбер в графе сейчас
     if (mask < 0 || number >= maxNum) // невозможный случай
         return;
     destroyOneNonOrientir(mask, number + 1, maxNum, numOfReb); // вызываем функцию для такого графа, в котором ребро с номером number существует
+    // но при этом обрабатываем следующее ребро
 
-    ll nMask = mask - (1 << maxNum - number - 1);
-    if (nMask >= 0 ) // если граф после удаления ребра number существует и является связным
+    ll nMask = mask - (1 << maxNum - number - 1); // удаляем ребро number
+    if (nMask >= 0 ) // если граф после удаления ребра number существует
     {
         if (numOfReb-1 == q || q == -1) 
-            printG(nMask);  // записываем его
+            printG(nMask);  // записываем его. q = -1 в случае, когда количество рёбер не важно
 
         return destroyOneNonOrientir(nMask, number + 1, maxNum, numOfReb-1); // вызываем функцию для него, но удаляем следующее ребро
     }
@@ -264,26 +266,27 @@ void printG(vector<vector<bool>> &matr) // вывод графа, записан
     count1++;
 }
 void destroyOneOrientir(vector<vector<bool>> matr, int i, int j, int numOfReb)
-{
+{// matr - ориентированный граф, i,j - номер удаляемого ребра, numOfRb - сколько рёбер в графе сейчас
+
     if (i == p) // невозможный случай
         return;
     if (j == p-1)
-        destroyOneOrientir(matr, i+1, 0, numOfReb);
+        destroyOneOrientir(matr, i+1, 0, numOfReb); // вызываем функцию для того же графа, но удаляем следующее ребро, причём это ребро под таким номером должно существовать
     else
-        destroyOneOrientir(matr, i, j+1, numOfReb); 
+        destroyOneOrientir(matr, i, j+1, numOfReb); // вызываем функцию для того же графа, но удаляем следующее ребро, причём это ребро под таким номером должно существовать
 
     if (i != j)
     {
         matr[i][j] = false;
-        numOfReb--;
+        numOfReb--; // удаляем ребро i,j
 
         if (numOfReb == q || q == -1)
             printG(matr);  // записываем его
 
         if (j == p - 1)
-            return destroyOneOrientir(matr, i + 1, 0, numOfReb);
+            return destroyOneOrientir(matr, i + 1, 0, numOfReb); // вызов функции для следующего ребра и графа без нынешнего ребра
         else
-            return destroyOneOrientir(matr, i, j + 1, numOfReb);
+            return destroyOneOrientir(matr, i, j + 1, numOfReb); // вызов функции для следующего ребра и графа без нынешнего ребра
     }
 }
 ///////////////////////////////////////////////////////////////
@@ -295,7 +298,7 @@ bool avtomorphCheck(vector<vector<bool>> &matr, vector<int> &removing)
 
         for (int j = 0; j < p; j++)
         {
-            if (!(matr[i][j] == matr[removing[i]][removing[j]]))
+            if (!(matr[i][j] == matr[removing[i]][removing[j]])) // проверка на автоморфизм, совпадают ли матрицы, если поменять номера
             {
                 return false;
             }
@@ -310,7 +313,8 @@ bool avtomorphCheck(vector<vector<bool>>& matr, vector<char>& removing)
 
         for (int j = 0; j < p; j++)
         {
-            if (!(matr[i][j] == matr[removing[i]-48][removing[j]-48]))
+            if (!(matr[i][j] == matr[removing[i]-48][removing[j]-48])) // проверка на автоморфизм, совпадают ли матрицы, если поменять номера
+
             {
                 return false;
             }
@@ -367,7 +371,7 @@ int main()
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
-        } while (takeNextPost(nextMoh, a1));
+        } while (takeNextPost(nextMoh, a1)); // размещения с повторениями по k
         cout << count1 << endl;
         count1 = 0;
 
@@ -384,7 +388,7 @@ int main()
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
-        } while (takeNextPerest(nextMoh, a1));
+        } while (takeNextPerest(nextMoh, a1)); // все перестановки
         cout << count1 << endl;
         count1 = 0;
 
@@ -407,7 +411,7 @@ int main()
                     fileOut << a1[i - 1];
                 }
                 fileOut << endl;
-            } while (takeNextPerest(nextMoh, a1));
+            } while (takeNextPerest(nextMoh, a1)); // размещения по k, обрезанные перестановки
         }
         cout << count1 << endl;
         count1 = 0;
@@ -427,7 +431,7 @@ int main()
                     fileOut << a1[i - 1];
                 }
                 fileOut << endl;
-            } while (takeNextMoh(nextMoh, a1, baseMoh.size()));
+            } while (takeNextMoh(nextMoh, a1, baseMoh.size()));   // все подмножества, то есть сочетания всех размеров
         }
         cout << count1 << endl;
         count1 = 0;
@@ -444,7 +448,7 @@ int main()
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
-        } while (takeNextMoh(nextMoh, a1, baseMoh.size()));
+        } while (takeNextMoh(nextMoh, a1, baseMoh.size()));  // сочетания по k
         cout << count1 << endl;
         count1 = 0;
         fileOut << endl << endl << endl << endl;
@@ -460,7 +464,7 @@ int main()
                 fileOut << a1[i - 1];
             }
             fileOut << endl;
-        } while (takeNextMohPov(nextMoh, a1));
+        } while (takeNextMohPov(nextMoh, a1));   // сочетания с повторениями
         cout << count1 << endl;
         count1 = 0;
         fileOut << endl << endl << endl << endl;
@@ -1164,12 +1168,13 @@ int main()
                 }
                 fileOut << endl;
             }
-        } while (takeNextPerest(nextMoh, a1));
+        } while (takeNextPerest(nextMoh, a1));         // смотрим все возможные перестановки и выводим те, которые есть автоморфизмы
         cout << "Автоморфизмов всего: " << count1 << endl;
 
         break;
     case(10):
         fileOut.open(("dz.10.txt"));
+        supFileOut.open(("tmp.txt"));
         fileIn >> p;
         cout << "Граф и перестановка введёны из файла input.txt" << endl;
         {
@@ -1201,39 +1206,54 @@ int main()
                 if (avtomorphCheck(matr, a1))
                 {
                     count1++;
-                    avtomorphs.push_back(a1);
+                    for (int i = 1; i <= a1.size(); i++)
+                    {
+                        supFileOut << a1[i - 1] + 1 - 48;
+                    }
+                    supFileOut << endl;
                 }
-            } while (takeNextPerest(nextMoh, a1));
+            } while (takeNextPerest(nextMoh, a1));     // считаем все возможные автоморфизмы и запоминаем их.
 
             cout << "Автоморфизмов всего: " << count1 << endl;
             cout << "Способов пометить граф по формуле: " << fact(p) / count1 << endl;
 
+            
+            count2 = count1;
             a1 = {}; count1 = 0;
+            supFileOut.close(); fileIn.close();
+            
             vector<vector<char>> newPerest = {};
             for (int i = 1; i <= baseMoh.size(); i++)
-                a1.push_back(takeNnextElt(nextMoh, i));
+                a1.push_back(takeNnextElt(nextMoh, i));  // вновь проходимся по всем возможным перестановкам
             do
             {
                 newPerest = {};
-                for (int i = 0; i < avtomorphs.size(); i++)
+                fileIn.open(("tmp.txt"));
+                for (int i = 0; i < count2; i++) // применяем все автоморфизмы
                 {
+                    vector<char> avtmp = {};
+                    for (int j = 1; j <= a1.size(); j++)
+                    {
+                        char ttmp;
+                        fileIn >> ttmp;
+                        avtmp.push_back(ttmp-1);
+                    }
                     vector<char> tmp = a1;
                     for (int j = 0; j < a1.size(); j++)
                     {
-                        tmp[j] = avtomorphs[i][tmp[j] - 48];
+                        tmp[j] = avtmp[tmp[j] - 48];
                     }
-                    newPerest.push_back(tmp);
-                }
-                for (int i = 0; i < newPerest.size(); i++)
-                {
+                    // получили новую перестановку в tmp
+                    
                     for (int j = 0; j < a1.size(); j++)
-                    {
-                        if (a1[j] < newPerest[i][j])
+                    {   // проверяем, является ли нынешняя перестановка минимальной среди всех новых перестановок
+                        if (a1[j] < tmp[j]) // перестановка явно меньше
                             break;
-                        else if (a1[j] > newPerest[i][j])
-                            goto exit;
+                        else if (a1[j] > tmp[j]) //перестановка явно больше
+                            goto exit; // пропускаем вывод нынешней перестановки
                     }
                 }
+                
                 count1++;
                 for (int i = 0; i < p; i++)
                 {
@@ -1247,7 +1267,8 @@ int main()
                     fileOut << endl;
                 }
                 fileOut << endl;
-            exit: ;
+            exit: 
+                fileIn.close();
             } while (takeNextPerest(nextMoh, a1));
         }
         cout << "Способов пометить граф в файле: " << count1 << endl;

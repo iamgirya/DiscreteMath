@@ -50,21 +50,6 @@ pair<char, vector<pair<char, int>>> madeNextEltMoh(vector<char>& alphabet)
                                                                               // после последнего элемента идёт первый
     return make_pair(alphabet[0], nextElt);
 }
-bool takeNextPost(pair<char, vector<pair<char, int>>>& nextElt, vector<char>& word)
-// получает на вход слово, первую букву и множество следующих элементов. Изменяет слово на следующее в лексикографическом порядке.
-{
-    int i = word.size() - 1; // проходимся c конца
-    char firstElt = nextElt.first; //получаем первую букву
-    while (i != -1)
-    {
-        // меняем нынешнюю букву на следующую
-        word[i] = nextElt.second[word[i]].first;
-        if (word[i] != firstElt) // если был сделан цикл, то необходимо поменять и следующую букву
-            return true;
-        i--;
-    }
-    return false;
-}
 bool takeNextMoh(pair<char, vector<pair<char, int>>>& nextElt, vector<char>& moh, int coutOfOn)
 // получает на вход первый элемент, множество следующих элементов. Изменяет подмножество на следующее в лексикографическом порядке того же размера.
 {
@@ -186,31 +171,6 @@ char takeNnextElt(pair<char, vector<pair<char, int>>>& nextElt, int n)
     }
     return c;
 }
-bool takeNextMohPov(pair<char, vector<pair<char, int>>>& nextElt, vector<char>& moh)
-// получает на вход первый элемент, множество следующих элементов. Изменяет подмножество с повторениями на следующее в лексикографическом порядке того же размера.
-{
-    int top = 0;
-    int i = moh.size() - 1;
-    char firstElt = nextElt.first;
-    moh[i] = nextElt.second[moh[i]].first; // меняем последнюю букву
-    if (moh[i] != firstElt) // если не было цикла, всё отлично
-        return true;
-    while (true)
-    {
-        top++; // иначе начинаем идти по слову в начало
-        if (i - top == -1)
-            return false;
-
-        if (nextElt.second[moh[i - top]].first != firstElt)
-            break; // необходимо выбрать такую букву, что при изменении её на следующую, буквы справа от неё можно будет расположить в лексикографическом порядке
-    }
-    moh[i - top] = nextElt.second[moh[i - top]].first; // нашли такую букву
-    while (top > 0)
-    {
-        top--; // меняем весь хвост слова
-        moh[i - top] = moh[i - top - 1];
-    }
-}
 
 
 int main()
@@ -235,7 +195,7 @@ int main()
         cout << "Введите максимальное количество повторений букв: ";
         cin >> k;
 
-        if (2 * k <= n && n <= 2 * k + 8 && k >= 2)
+        if (2 * k <= n && n <= 2 * k + 8 && k >= 2) // букв должно хватить и мест для букв должно хватить
             break;
         cout << "Непривильно введены изначальные данные, попробуйте снова";
     }
